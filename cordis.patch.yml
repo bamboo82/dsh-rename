@@ -1,0 +1,16 @@
+# dsh-rename bundle patch: mounts the /rename command into the host
+# composition of a dsh profile.
+#
+# Install: `dsh plugin --profile <name> add dsh-rename` (npm, github:, or a
+# local path). The `dsh plugin` command pnpm-installs the package into the
+# profile and reconciles it into the profile's `dsh.profile.bundles` layer
+# list, so this row becomes active on the next boot of that profile.
+#
+# The plugin adds no custom session events: every rename is the built-in
+# `session/title` event appended through `ctx.sessionTitle.rename`, so a
+# session renamed by this plugin stays readable by any DSH build.
+- insert:
+    - id: dsh-rename
+      # Node-resolvable package name — must stay in sync with package.json
+      # `name`.
+      name: dsh-rename

@@ -1,0 +1,93 @@
+{
+  "name": "dsh-rename",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness slash command: rename the current session with /rename, or let the model read the conversation and pick the name for you",
+  "type": "module",
+  "main": "lib/types/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/types/index.js"
+    },
+    "./title": {
+      "types": "./lib/types/title.d.ts",
+      "default": "./lib/types/title.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/types/**/*.js",
+    "lib/types/**/*.d.ts",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "license": "MIT",
+  "author": {
+    "name": "lmst2",
+    "url": "https://github.com/lmst2"
+  },
+  "homepage": "https://github.com/lmst2/dsh-rename#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmst2/dsh-rename.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lmst2/dsh-rename/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "session-title",
+    "rename",
+    "slash-command",
+    "ai-agent",
+    "llm"
+  ],
+  "engines": {
+    "node": "^22.19 || >=24"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "verify": "pnpm typecheck && pnpm test && pnpm build && node scripts/verify.mjs",
+    "clean": "node -e \"const fs=require('fs');for(const d of ['lib','dist'])fs.rmSync(d,{recursive:true,force:true})\"",
+    "prepack": "node -e \"const fs=require('fs'),p=process.cwd();for(const f of ['README.md','README.en.md','LICENSE','NOTICE','cordis.patch.yml'])if(!fs.existsSync(require('path').join(p,f)))throw new Error('missing '+f)\""
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-agent": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-commands": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-session": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-session-title": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-agent": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-commands": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-llm": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-session": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-session-title": "^0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

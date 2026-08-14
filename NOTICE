@@ -1,0 +1,17 @@
+NOTICE
+
+dsh-rename (/rename slash command for DeepSeek Harness)
+Copyright (c) 2026 dsh-rename contributors
+
+This project is built on the public plugin seams of DeepSeek Harness
+(https://github.com/deepseek-ai/DeepSeek-Harness), MIT License,
+Copyright (c) 2026 DeepSeek:
+
+- the human-command registry (`@deepseek-ai/dsh-commands`),
+- the session-title service (`@deepseek-ai/dsh-session-title`), and
+- the LLM streaming API (`@deepseek-ai/dsh-llm`).
+
+The project uses those contracts as designed and copies no DeepSeek Harness
+source code into this repository.
+
+This repository is MIT licensed. It is not affiliated with DeepSeek.
